@@ -20,9 +20,9 @@
     "pinia": "^4.0.1",
     "socket.io-client": "^4.8.3",
     "swiper": "^12.1.4",
-    "vue": "latest",
+    "vue": "^3.4.29",
     "vue-recaptcha": "^3.0.0-alpha.2",
-    "vue-router": "latest",
+    "vue-router": "^4.4.0",
     "vue3-apexcharts": "1.6.0"
   },
   "devDependencies": {
