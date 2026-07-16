@@ -21,7 +21,7 @@ services:
     volumes:
       - sqlite_data:/app/database
     networks:
-      - jmc_network
+      - homelab_network
     # Menjalankan migrasi otomatis dan seed (hanya 1x jika belum pernah di-seed)
     command: >
       sh -c "npm run migrate &&
@@ -48,7 +48,7 @@ services:
       - NUXT_PUBLIC_API_BASE_URL=/api
       - APP_NAME=Sistem Kepegawaian JMC
     networks:
-      - jmc_network
+      - homelab_network
     depends_on:
       - backend
 
@@ -57,5 +57,5 @@ volumes:
     name: jmc_sqlite_data
 
 networks:
-  jmc_network:
-    name: jmc_network
+  homelab_network:
+    external: true
