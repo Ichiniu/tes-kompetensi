@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       appName: process.env.APP_NAME || 'Sistem Kepegawaian',
       appClient: process.env.APP_CLIENT || 'JMC IT Consultant',
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
-      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3001/api',
+      apiBaseUrl: process.env.API_BASE_URL || '/api'
     },
   },
 
