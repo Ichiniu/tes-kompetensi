@@ -15,6 +15,7 @@ services:
       - PORT=3001
       - JWT_SECRET=super_secret_jwt_key_jmc_technical_test
       - JWT_EXPIRES_IN=1d
+      - FRONTEND_URL=https://project.casirplus.my.id
       # Mengarahkan file SQLite agar tersimpan di volume persistent
       - SQLITE_FILENAME=/app/database/dev.sqlite3
     volumes:
