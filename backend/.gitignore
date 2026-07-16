@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+npm-debug.log
+
+# Environment variables (SANGAT RAHASIA)
+.env
+.env.*
+!.env.example
+
+# SQLite Database (SANGAT RAHASIA & BERUBAH-UBAH)
+*.sqlite3
+*.db
+*.sqlite
+
+# Uploads / Public assets (File hasil upload user)
+uploads/
+public/uploads/
+
+# Mac OS
+.DS_Store
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

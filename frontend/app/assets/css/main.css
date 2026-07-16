@@ -1,0 +1,125 @@
+/* ============================================
+   main.css — Global overrides & custom styles
+   Design System: Minimalist White + Accent Oranye
+   ============================================ */
+
+/* Design Tokens */
+:root {
+  --bg-base: #FFFFFF;
+  --bg-surface: #F7F7F8;
+  --text-primary: #1F1F23;
+  --text-secondary: #6B6B72;
+  --border: #E5E5E8;
+  --accent: #E8792E;
+  --accent-hover: #D1651C;
+
+  /* Override Tabler/Bootstrap CSS variables for primary color */
+  --tblr-primary: #E8792E;
+  --tblr-primary-rgb: 232, 121, 46;
+  --tblr-primary-lt: rgba(232, 121, 46, 0.1);
+  --tblr-link-color: #E8792E;
+  --tblr-link-hover-color: #D1651C;
+}
+
+/* Force light theme — single theme, no dark mode */
+body {
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Override Bootstrap btn-primary with accent orange */
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  color: #fff !important;
+}
+
+.btn-primary:disabled {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  opacity: 0.65;
+}
+
+/* Override btn-outline-primary */
+.btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* Override bg-primary (avatar, badges) */
+.bg-primary {
+  background-color: var(--accent) !important;
+}
+
+.text-primary {
+  color: var(--accent) !important;
+}
+
+/* Active sidebar item */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-item.active > .nav-link {
+  color: var(--accent) !important;
+}
+
+/* Smooth transitions */
+body,
+body * {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Floating navbar */
+#navbar {
+  transition: box-shadow 0.3s ease, background-color 0.2s ease;
+}
+
+#navbar.float {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar collapse animation */
+.sidebar {
+  transition: width 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+/* Page transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+

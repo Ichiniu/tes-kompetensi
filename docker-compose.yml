@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jmc_backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      # Jalankan mode development agar tetap menggunakan SQLite (sesuai knexfile.js)
+      - NODE_ENV=development
+      - PORT=3001
+      - JWT_SECRET=super_secret_jwt_key_jmc_technical_test
+      - JWT_EXPIRES_IN=1d
+      # Mengarahkan file SQLite agar tersimpan di volume persistent
+      - SQLITE_FILENAME=/app/database/dev.sqlite3
+    volumes:
+      - sqlite_data:/app/database
+    networks:
+      - jmc_network
+    # Menjalankan migrasi otomatis dan seed (hanya 1x jika belum pernah di-seed)
+    command: >
+      sh -c "npm run migrate &&
+      if [ ! -f /app/database/.seeded ]; then
+        npm run seed && touch /app/database/.seeded;
+      fi &&
+      npm start"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3001/api/master/agama"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jmc_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_PUBLIC_API_BASE_URL=http://localhost:3001/api
+      - APP_NAME=Sistem Kepegawaian JMC
+    networks:
+      - jmc_network
+    depends_on:
+      - backend
+
+volumes:
+  sqlite_data:
+    name: jmc_sqlite_data
+
+networks:
+  jmc_network:
+    name: jmc_network

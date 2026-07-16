@@ -1,0 +1,13 @@
+# Global ignores
+node_modules/
+.env
+.env.*
+!.env.example
+*.sqlite3
+*.db
+.DS_Store
+.idea/
+.vscode/
+
+# Sembunyikan jejak AI / Agent
+.agents/
