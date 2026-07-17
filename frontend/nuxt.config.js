@@ -9,6 +9,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
+    // Server-side only configurations
+    apiBaseUrlServer: process.env.API_BASE_URL_SERVER || 'http://backend:3001/api',
     public: {
       appName: process.env.APP_NAME || 'Sistem Kepegawaian',
       appClient: process.env.APP_CLIENT || 'JMC IT Consultant',
