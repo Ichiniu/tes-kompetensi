@@ -118,7 +118,7 @@ router.get('/:id', checkPermission('Modul Tunjangan Transport', 'read'), tunjang
  *       200:
  *         description: Berhasil kalkulasi
  */
-router.post('/calculate', checkPermission('Modul Tunjangan Transport', 'create'), tunjanganController.calculateTunjangan);
+router.post('/calculate', checkPermission('Modul Tunjangan Transport', 'read'), tunjanganController.calculateTunjangan);
 
 
 module.exports = router;

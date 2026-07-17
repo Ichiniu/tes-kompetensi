@@ -104,3 +104,24 @@ Setelah server backend menyala, Anda bisa mengakses dokumentasi lengkap seluruh 
 - **Data Pegawai**: Manajemen informasi pegawai termasuk unggah foto profil (dengan validasi *magic bytes*).
 - **Tunjangan Transport**: Setting jarak, tarif per km, dan kalkulator massal tunjangan berdasarkan jarak rumah - kantor.
 - **Audit Log / Activity Logging**: Perekaman otomatis jejak *user* setiap kali login, logout, ekspor PDF/Excel, hingga aktivitas CRUD.
+
+---
+
+## 6. Docker Deployment (Docker Compose)
+
+Aplikasi ini siap dijalankan menggunakan **Docker Compose** dalam lingkungan produksi maupun pengembangan.
+
+### Langkah-langkah Menjalankan:
+1. Pastikan port `3000` (frontend) dan `3001` (backend) belum digunakan di komputer/VPS Anda.
+2. Jalankan perintah berikut di folder utama (*root*) proyek:
+   ```bash
+   docker compose up -d --build
+   ```
+3. Docker akan otomatis membangun (*build*) *image* Frontend dan Backend, membuat volume persistent untuk SQLite, serta menjalankan migrasi database & seeding awal secara otomatis.
+4. Akses aplikasi:
+   - **Frontend**: `http://localhost:3000`
+   - **Backend / Swagger**: `http://localhost:3001` / `http://localhost:3001/api-docs`
+
+> [!NOTE]  
+> Jika dideploy di belakang reverse proxy (seperti Nginx Proxy Manager), Anda dapat menyesuaikan konfigurasi network dan *environment variables* `NUXT_PUBLIC_API_BASE_URL` dan `FRONTEND_URL` di dalam `docker-compose.yml`.
+
